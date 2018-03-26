@@ -13,7 +13,7 @@ $(function() {
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
     */
-    describe('RSS Feeds', function() {
+    describe('RSS Feeds', () => {
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
          * empty. Experiment with this before you get started on
@@ -21,7 +21,7 @@ $(function() {
          * allFeeds in app.js to be an empty array and refresh the
          * page?
          */
-        it('are defined', function() {
+        it('are defined', () => {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
@@ -32,7 +32,7 @@ $(function() {
          * and that the URL is not empty.
          */
         
-        it('have URL', function() {
+        it('have URL', () => {
             for (const feed of allFeeds) {
                 expect(feed.url).toBeDefined();
                 expect(feed.url).not.toBe(0); 
@@ -45,7 +45,7 @@ $(function() {
          * and that the name is not empty.
          */
 
-        it('have name', function() {
+        it('have name', () => {
             for (const feed of allFeeds) {
                 expect(feed.name).toBeDefined();
                 expect(feed.name).not.toBe(0); 
@@ -56,7 +56,7 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
     
-    describe('The menu', function() {
+    describe('The menu', () => {
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -64,7 +64,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
          
-        it('is hidden', function() {
+        it('is hidden', () => {
             let bodyClassName = $('body').attr('class');
 
             expect(bodyClassName).toContain('menu-hidden');
@@ -76,7 +76,7 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */ 
-        it('changes visibility', function() {
+        it('changes visibility', () => {
             let burgerMenu = $('.menu-icon-link');
 
             burgerMenu.trigger('click');
@@ -88,7 +88,7 @@ $(function() {
 
     /* TODO: Write a new test suite named "Initial Entries" */
     
-    describe('Initial Entries', function() {
+    describe('Initial Entries', () => {
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -99,40 +99,41 @@ $(function() {
         //let loadFeed = new loadFeed();
         let container = $('.feed');
 
-        beforeEach(function(done) {
-            loadFeed(0, function() {
+        beforeEach( (done) => {
+            loadFeed(0, () => {
                 done();
             })
         });
 
-        it('a feed entry is created', function(done) {       
+        it('a feed entry is created', (done) => {       
             expect(container.entry).not.toBe(0);
             done();
         });
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
     
-    describe('New Feed Selection', function() {
+    //describe('New Feed Selection', function() {
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        let initialEntry = $('.tpl-entry').html();
+        /*let initialFeed;
         
         beforeEach(function(done) {
             
             loadFeed(0, function() {
+                initialFeed = $('.feed').html();
                 done();
             })
         });
 
         
-        it('content changed', function() {
-            let loadedEntry = $('.tpl-entry').html();
+        it('content changed', function(done) {
+            let loadedFeed = $('.feed').html();
 
-            expect(loadedEntry).not.toMatch(initialEntry);
+            expect(loadedFeed).not.toMatch(initialFeed);
         });
             
-    });
+    });*/
 }());
