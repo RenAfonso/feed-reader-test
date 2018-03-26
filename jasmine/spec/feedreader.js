@@ -99,22 +99,40 @@ $(function() {
         //let loadFeed = new loadFeed();
         let container = $('.feed');
 
-
         beforeEach(function(done) {
             loadFeed(0, function() {
                 done();
             })
         });
 
-        it('should grab initial contacts', function(done) {       
+        it('a feed entry is created', function(done) {       
             expect(container.entry).not.toBe(0);
             done();
         });
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
+    
+    describe('New Feed Selection', function() {
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        let initialEntry = $('.tpl-entry').html();
+        
+        beforeEach(function(done) {
+            
+            loadFeed(0, function() {
+                done();
+            })
+        });
+
+        
+        it('content changed', function() {
+            let loadedEntry = $('.tpl-entry').html();
+
+            expect(loadedEntry).not.toMatch(initialEntry);
+        });
+            
+    });
 }());
