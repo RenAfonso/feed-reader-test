@@ -102,7 +102,7 @@ $(function() {
         beforeEach( (done) => {
             loadFeed(0, () => {
                 done();
-            })
+            });
         });
 
         it('a feed entry is created', (done) => {       
@@ -112,28 +112,34 @@ $(function() {
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
     
-    //describe('New Feed Selection', function() {
+    describe('New Feed Selection', function() {
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        /*let initialFeed;
+        let initialFeed;
+        let loadedFeed;
         
         beforeEach(function(done) {
+        
             
             loadFeed(0, function() {
                 initialFeed = $('.feed').html();
-                done();
-            })
+                loadFeed(1, function() {
+                    loadedFeed = $('.feed').html();
+                    done();
+                });
+            });
+
+            
         });
 
         
         it('content changed', function(done) {
-            let loadedFeed = $('.feed').html();
 
-            expect(loadedFeed).not.toMatch(initialFeed);
+            expect(loadedFeed).not.toBe(initialFeed);
         });
             
-    });*/
+    });
 }());
