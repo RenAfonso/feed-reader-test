@@ -120,10 +120,10 @@ $(function() {
          */
         let initialFeed;
         let loadedFeed;
+        let originalTimeout;
         
         beforeEach(function(done) {
-        
-            
+                        
             loadFeed(0, function() {
                 initialFeed = $('.feed').html();
                 loadFeed(1, function() {
@@ -139,7 +139,8 @@ $(function() {
         it('content changed', function(done) {
 
             expect(loadedFeed).not.toBe(initialFeed);
+            done();
         });
-            
+          
     });
 }());
