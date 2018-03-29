@@ -62,35 +62,33 @@ $(function() {
             });
         });
 
-        it('a feed entry is created', (done) => {       
+        it('a feed entry is created', () => {       
             expect(container.entry).not.toBe(0);
-            done();
         });
     });
 
     // Test suite for new feed selection
-    describe('New Feed Selection', function() {
+    describe('New Feed Selection', () => {
 
         // Tests that the feed actually changes when loadFeed is loaded.
         let initialFeed;
         let loadedFeed;
         let originalTimeout;
         
-        beforeEach(function(done) {
+        beforeEach( (done) => {
             // Here we must get the feed HTML after each consecutive load to be able to compare both           
-            loadFeed(0, function() {
+            loadFeed(0, () => {
                 initialFeed = $('.feed').html();
-                loadFeed(1, function() {
+                loadFeed(1, () => {
                     loadedFeed = $('.feed').html();
                     done();
                 });
             });
         });
         
-        it('content changed', function(done) {
+        it('content changed', () => {
 
             expect(loadedFeed).not.toBe(initialFeed);
-            done();
         });
           
     });
