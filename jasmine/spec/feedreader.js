@@ -16,7 +16,7 @@ $(function() {
         it('have URL', () => {
             for (const feed of allFeeds) {
                 expect(feed.url).toBeDefined();
-                expect(feed.url).not.toBe(0); 
+                expect(feed.url.length).not.toBe(0); 
             }    
         });
 
@@ -24,7 +24,7 @@ $(function() {
         it('have name', () => {
             for (const feed of allFeeds) {
                 expect(feed.name).toBeDefined();
-                expect(feed.name).not.toBe(0); 
+                expect(feed.name.length).not.toBe(0); 
             }   
         });
     });
